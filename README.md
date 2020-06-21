@@ -1,4 +1,5 @@
-# Hello, World (Java/Spring Boot)
+# Hello, World (Java/Spring Boot) 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/35220ca67e2242c19caf405ce3ab53d3)](https://www.codacy.com/manual/gsvk2734tp/hello-forge-springboot?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gsvk2734tp/hello-forge-springboot&amp;utm_campaign=Badge_Grade)
 
 This is a Java/Spring Boot template for building a microservice in Kubernetes and Docker. This template is designed for use with [Forge](https://forge.sh), [Telepresence](https://www.telepresence.io), and [Ambassador](https://www.getambassador.io).
 
