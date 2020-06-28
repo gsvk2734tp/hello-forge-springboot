@@ -14,6 +14,11 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
+jar {
+	baseName = 'gs-messaging-rabbitmq'
+	version =  '0.1.0'
+}
+
 group = 'io.datawire.labs'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
@@ -28,6 +33,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	runtime('org.springframework.boot:spring-boot-devtools')
 	runtimeOnly 'com.h2database:h2'
+	compile("org.springframework.boot:spring-boot-starter-amqp")
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 checkstyle {

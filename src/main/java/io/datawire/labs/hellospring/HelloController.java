@@ -1,9 +1,11 @@
 package io.datawire.labs.hellospring;
 
 import java.util.concurrent.TimeUnit;
+import org.apache.log4j.Logger;
 
 import io.datawire.labs.hellospring.dao.PersonDAO;
 import io.datawire.labs.hellospring.entity.Person;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,8 +13,11 @@ import org.springframework.web.bind.annotation.*;
 public class HelloController {
     @Autowired
     private PersonDAO personDAO;
+    @Autowired
+    AmqpTemplate template;
 
     private static long start = System.currentTimeMillis();
+    private static final Logger logger = Logger.getLogger(HelloController.class);
 
     @GetMapping("/")
     public String sayHello() {
@@ -33,6 +38,14 @@ public class HelloController {
         all.forEach(p -> sb.append(p.getFullName()).append("<br>"));
 
         return sb.toString();
+    }
+
+    @RequestMapping("/emit")
+    @ResponseBody
+    String queue1() {
+        logger.info("Emit to queue1");
+        template.convertAndSend("queue1", sayHello());
+        return "Emit to queue";
     }
 
 }
